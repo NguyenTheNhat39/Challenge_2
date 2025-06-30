@@ -1,17 +1,16 @@
-const express = require('express');
 require('dotenv').config();
-const productRoutes = require('./routes/product');
+const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3000;
+const productRoutes = require('./routes/product');
 
-// BẮT BUỘC: Parse JSON body
+// Middleware để đọc JSON body
 app.use(express.json());
 
-// Route
+// Route chính
 app.use('/api/product', productRoutes);
 
-// Start server
+// Khởi động server
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
-
